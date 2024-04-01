@@ -1,9 +1,14 @@
 import "./App.css";
+import Home from "./components/Home.jsx";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">App Component</h1>
+      <div className="w-screen h-screen flex justify-center">
+        <div className="w-3/5 h-screen">
+          <Home />
+        </div>
+      </div>
     </>
   );
 }
