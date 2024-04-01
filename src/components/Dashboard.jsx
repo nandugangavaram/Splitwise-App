@@ -1,42 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import AddButton from "./AddButton";
+import { data, capitalizeFirstLetter } from "./lib/Data.js";
 
 const Dashboard = () => {
-  const data = [
-    {
-      exp_name: "Boat",
-      amount: "53",
-      date: "Mar 31",
-      paid_by: "yash",
-      borrowed_by: "nandan",
-    },
-    {
-      exp_name: "MVJ Sauces",
-      amount: "24",
-      date: "Mar 28",
-      paid_by: "nandan",
-      borrowed_by: "david",
-    },
-    {
-      exp_name: "Veggies",
-      amount: "15",
-      date: "Mar 11",
-      paid_by: "david",
-      borrowed_by: "yash",
-    },
-  ];
-
-  const [paid_by, setPaid_by] = useState(null);
-
+  const [currData, setCurrData] = useState(data);
+  const updateData = (new_data) => {
+    setCurrData(new_data);
+  };
   return (
     <>
-      <div className="h-screen flex flex-col">
-        <div className="h-1/4"></div>
-        <div className="h-screen">
-          {data.map((expense) => {
+      <div className="h-max flex flex-col">
+        <div className="h-inherit">
+          {currData.map((expense) => {
             return (
-              <div key="exp_name" className=" h-20 w-30 border-4 mb-2">
+              <div
+                key={expense.exp_name}
+                className=" h-20 w-30 border-slate-300 border-4 rounded-lg mb-2"
+              >
                 <div className="flex p-4">
-                  <div className="pr-4">{expense.date} </div>
+                  <div className="pr-4">{expense.date}</div>
                   <div className="flex justify-between items-center w-screen">
                     <div className="pl-4">{expense.exp_name}</div>
                     <div
@@ -48,17 +30,20 @@ const Dashboard = () => {
                       }
                     >
                       <div>
-                        {expense.paid_by === "nandan"
-                          ? "You Lent"
-                          : "You Borrowed"}
+                        {`${capitalizeFirstLetter(
+                          expense.paid_by
+                        )} Paid | ${capitalizeFirstLetter(
+                          expense.borrowed_by
+                        )} borrowed`}
                       </div>
-                      <div className="">A$ {expense.amount}</div>
+                      <div>A$ {expense.amount}</div>
                     </div>
                   </div>
                 </div>
               </div>
             );
           })}
+          <AddButton updateData={updateData} />
         </div>
       </div>
     </>
