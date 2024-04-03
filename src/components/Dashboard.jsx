@@ -6,12 +6,13 @@ const Dashboard = () => {
   const [currData, setCurrData] = useState(data);
   const updateData = (new_data) => {
     setCurrData(new_data);
+    data.push(new_data);
   };
   return (
     <>
       <div className="h-max flex flex-col">
         <div className="h-inherit">
-          {currData.map((expense) => {
+          {currData.reverse().map((expense) => {
             return (
               <div
                 key={expense.exp_name}

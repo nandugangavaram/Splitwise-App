@@ -63,19 +63,15 @@ const AddButton = ({ updateData }) => {
   const resetData = () => {
     setDescription("");
     setAmount("");
-    console.log(payer);
-    console.log(receiver);
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <div className="absolute bottom-1 right-1 mr-10 mb-10">
-          <button
-            className="w-16 h-16 font-bold rounded-full"
-            style={{ backgroundColor: `#09ba94` }}
-          >
-            +
-          </button>
+        <div
+          className="absolute bottom-1 right-1 mr-10 mb-10 w-16 h-16 font-bold rounded-full flex items-center justify-center text-3xl pb-2"
+          style={{ backgroundColor: `#09ba94` }}
+        >
+          +
         </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] border-4 border-green-200">

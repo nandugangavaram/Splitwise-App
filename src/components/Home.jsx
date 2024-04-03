@@ -1,6 +1,7 @@
 import { CgProfile } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Dashboard from "./Dashboard.jsx";
+import Balances from "./Balances.jsx";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         <h1 className="text-2xl">Home</h1>
         <CgProfile size={50} className="pr-4" />
       </div>
+      <Balances />
       <Dashboard />
     </>
   );
